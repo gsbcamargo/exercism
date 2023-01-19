@@ -5,8 +5,8 @@ pub fn divmod(dividend: i16, divisor: i16) -> (i16, i16) {
 pub fn evens<T>(iter: impl Iterator<Item = T>) -> impl Iterator<Item = T> {
     iter
         .enumerate()
-        .filter(|(i, _x)| i % 2 == 0)
-        .map(|(_i, x)| x)
+        .filter(|(index, _value)| index % 2 == 0)
+        .map(|(_index, value)| value)
 }
 
 pub struct Position(pub i16, pub i16);
