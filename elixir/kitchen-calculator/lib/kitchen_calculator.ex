@@ -20,8 +20,5 @@ defmodule KitchenCalculator do
   def from_milliliter({_, volume}, :tablespoon), do: {:tablespoon, volume / @us_tablespoon}
   def from_milliliter(volume_pair, :milliliter), do: volume_pair
 
-
-  def convert(volume_pair, unit) do
-    volume_pair |> to_milliliter |> from_milliliter(unit)
-  end
+  def convert(volume_pair, unit), do: volume_pair |> to_milliliter |> from_milliliter(unit)
 end
