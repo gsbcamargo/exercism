@@ -8,7 +8,7 @@ defmodule HighSchoolSweetheart do
   end
 
   def initials(full_name) do
-    [first_name, last_name] = full_name |> String.split(" ", trim: true)
+    [first_name, last_name] = full_name |> String.split(" ")
     initial(first_name) <> " " <> initial(last_name)
   end
 
