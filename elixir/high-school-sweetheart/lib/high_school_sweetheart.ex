@@ -4,14 +4,12 @@ defmodule HighSchoolSweetheart do
   end
 
   def initial(name) do
-    "#{HighSchoolSweetheart.first_letter(String.upcase(name))}."
+    "#{HighSchoolSweetheart.first_letter(name)}." |> String.upcase
   end
 
   def initials(full_name) do
-    splitten_name = String.split(full_name, " ")
-    first_name = Enum.at(splitten_name, 0)
-    second_name = Enum.at(splitten_name, 1)
-    "#{HighSchoolSweetheart.initial(first_name)}" <> " " <> "#{HighSchoolSweetheart.initial(second_name)}"
+    [first_name, last_name] = full_name |> String.split(" ", trim: true)
+    initial(first_name) <> " " <> initial(last_name)
   end
 
   def pair(full_name1, full_name2) do
