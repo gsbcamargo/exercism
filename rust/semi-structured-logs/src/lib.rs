@@ -1,3 +1,5 @@
+use std::fmt;
+
 /// various log levels
 #[derive(Clone, PartialEq, Eq, Debug)]
 pub enum LogLevel {
@@ -5,10 +7,19 @@ pub enum LogLevel {
     Warning,
     Error,
 }
+
+impl fmt::Display for LogLevel {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        match self {
+            Self::Info => write!(f, "INFO"),
+            Self::Warning => write!(f, "WARNING"),
+            Self::Error => write!(f, "ERROR"),
+        }       
+    }
+}
 /// primary function for emitting logs
 pub fn log(level: LogLevel, message: &str) -> String {
-    let level = format!("{:?}", level);
-    format!("[{}]: {}", level.to_uppercase(), message)
+    format!("[{level}]: {message}")
 }
 
 pub fn info(message: &str) -> String {
